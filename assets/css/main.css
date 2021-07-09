@@ -499,6 +499,7 @@ hr {
 
 .about-area .content {
   margin-top: 15px;
+  text-align: justify;
 }
 
 .about-area .content p {
@@ -530,7 +531,7 @@ hr {
 }
 
 .top-nav-collapse .navbar-brand img {
-  width: 70%;
+  height: 60px;
 }
 
 .top-nav-collapse .navbar-nav .nav-link {
@@ -558,7 +559,7 @@ hr {
 }
 
 .navbar-brand img {
-  width: 70%;
+  height: 60px;
 }
 
 .top-nav-collapse .navbar-nav li.active a.nav-link {
