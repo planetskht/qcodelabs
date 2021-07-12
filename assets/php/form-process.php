@@ -59,8 +59,14 @@ $Body .= "Message: ";
 $Body .= $message;
 $Body .= "\n";
 
+$headers = array(
+    'From' => $email,
+    'Reply-To' => $email,
+    'X-Mailer' => 'PHP/' . phpversion()
+);
+
 // send email
-$success = mail($EmailTo, $Subject, $Body, "From:".$email);
+$success = mail($EmailTo, $Subject, $Body, $headers);
 
 // redirect to success page
 if ($success && $errorMSG == ""){
