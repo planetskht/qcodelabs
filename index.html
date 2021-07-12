@@ -8,13 +8,15 @@
     <title>QCode Labs</title>
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
     <!-- Icon -->
     <link rel="stylesheet" href="assets/fonts/line-icons.css">
     <!-- Owl carousel -->
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.css">
+    <!-- <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.css"> -->
     
     <!-- Animate -->
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -510,94 +512,11 @@
   
     <!-- Testimonial Section Start -->
     <section id="testimonial" class="testimonial section-padding">
-      <div class="container">
+      <div class="container" style="max-width: 95%;">
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div id="testimonials" class="owl-carousel wow fadeInUp" data-wow-delay="1.2s">
-              <div class="item">
-                <div class="testimonial-item">
-                  <div class="img-thumb">
-                    <img src="assets/img/testimonial/img1.jpg" alt="">
-                  </div>
-                  <div class="info">
-                    <h2><a href="#">David Smith</a></h2>
-                    <h3><a href="#">Creative Head</a></h3>
-                  </div>
-                  <div class="content">
-                    <p class="description">Praesent cursus nulla non arcu tempor, ut egestas elit tempus. In ac ex fermentum, gravida felis nec, tincidunt ligula.</p>
-                    <div class="star-icon mt-3">
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-half"></i></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimonial-item">
-                  <div class="img-thumb">
-                    <img src="assets/img/testimonial/img2.jpg" alt="">
-                  </div>
-                  <div class="info">
-                    <h2><a href="#">Domeni GEsson</a></h2>
-                    <h3><a href="#">Awesome Technology co.</a></h3>
-                  </div>
-                  <div class="content">
-                    <p class="description">Praesent cursus nulla non arcu tempor, ut egestas elit tempus. In ac ex fermentum, gravida felis nec, tincidunt ligula.</p>
-                    <div class="star-icon mt-3">
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-half"></i></span>
-                      <span><i class="lni-star-half"></i></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimonial-item">
-                  <div class="img-thumb">
-                    <img src="assets/img/testimonial/img3.jpg" alt="">
-                  </div>
-                  <div class="info">
-                    <h2><a href="#">Dommini Albert</a></h2>
-                    <h3><a href="#">Nesnal Design co.</a></h3>
-                  </div>
-                  <div class="content">
-                    <p class="description">Praesent cursus nulla non arcu tempor, ut egestas elit tempus. In ac ex fermentum, gravida felis nec, tincidunt ligula.</p>
-                    <div class="star-icon mt-3">
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-half"></i></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimonial-item">
-                  <div class="img-thumb">
-                    <img src="assets/img/testimonial/img4.jpg" alt="">
-                  </div>
-                  <div class="info">
-                    <h2><a href="#">Fernanda Anaya</a></h2>
-                    <h3><a href="#">Developer</a></h3>
-                  </div>
-                  <div class="content">
-                    <p class="description">Praesent cursus nulla non arcu tempor, ut egestas elit tempus. In ac ex fermentum, gravida felis nec, tincidunt ligula.</p>
-                    <div class="star-icon mt-3">
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-filled"></i></span>
-                      <span><i class="lni-star-half"></i></span>
-                      <span><i class="lni-star-half"></i></span>
-                      <span><i class="lni-star-half"></i></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="testimonial-item">
+              <div id="openings_table"></div>
             </div>
           </div>
         </div>
@@ -749,3 +668,35 @@
       
   </body>
 </html>
+<script>
+  $(document).ready(function(){
+    $.ajax({
+     url:"assets/openings.csv",
+     dataType:"text",
+     success:function(data)
+     {
+      var employee_data = data.split(/\r?\n|\r/);
+      var table_data = '<table class="table table-bordered table-striped">';
+      for(var count = 0; count<employee_data.length; count++)
+      {
+       var cell_data = employee_data[count].split(",");
+       table_data += '<tr>';
+       for(var cell_count=0; cell_count<cell_data.length; cell_count++)
+       {
+        if(count === 0)
+        {
+         table_data += '<th>'+cell_data[cell_count]+'</th>';
+        }
+        else
+        {
+         table_data += '<td>'+cell_data[cell_count]+'</td>';
+        }
+       }
+       table_data += '</tr>';
+      }
+      table_data += '</table>';
+      $('#openings_table').html(table_data);
+     }
+    });
+  });
+  </script>
