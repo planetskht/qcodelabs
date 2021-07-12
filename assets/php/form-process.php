@@ -16,6 +16,13 @@ if (empty($_POST["email"])) {
     $email = $_POST["email"];
 }
 
+// MOBILE
+if (empty($_POST["mobile"])) {
+    $errorMSG .= "Mobile is required ";
+} else {
+    $mobile = $_POST["mobile"];
+}
+
 // MSG SUBJECT
 if (empty($_POST["msg_subject"])) {
     $errorMSG .= "Subject is required ";
@@ -42,6 +49,8 @@ $Body .= $name;
 $Body .= "\n";
 $Body .= "Email: ";
 $Body .= $email;
+$Body .= "Mobile: ";
+$Body .= $mobile;
 $Body .= "\n";
 $Body .= "Subject: ";
 $Body .= $msg_subject;

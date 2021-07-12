@@ -752,10 +752,10 @@ hr {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 650px;
+  min-height: 590px;
   position: relative;
   overflow: hidden;
-  padding: 180px 0 80px;
+  padding: 130px 0 80px;
 }
 
 #hero-area .contents .head-title {
