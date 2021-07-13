@@ -402,8 +402,12 @@ hr {
 #features .box-item:hover {
   box-shadow: 0 10px 22px 10px rgba(27, 38, 49, 0.1);
 }
-
+/* 
 #features .box-item:hover h4 {
+  color: #F63854;
+} */
+
+#features .section-header:hover {
   color: #F63854;
 }
 
